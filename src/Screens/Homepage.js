@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Container, Col, Row, Badge, Button } from "reactstrap";
 import { Router, Link } from "react-router-dom";
 import Product from "./ProductCard";
+import { BASE_URL } from "../config";
+
+// data for Carousel;
 const items = [
   {
     src: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
@@ -28,7 +31,7 @@ function Homepage() {
   useEffect(async () => {
     try {
       const axiosResponse = await axios.get(
-        "http://localhost:3000/products/categoryProducts"
+        BASE_URL + "/products/categoryProducts"
       );
       let { data } = axiosResponse || {};
       console.log(
@@ -103,22 +106,30 @@ function Homepage() {
                     {/* {product.category + "  asdf"} */}
                     {product.category} <Badge color="secondary">New</Badge>
                   </h1>
-
-                  <Button style={{ margin: "5px" }} color="primary">
-                    View All
-                  </Button>
+                  <Link to={"/category/" + product.category}>
+                    <Button style={{ margin: "5px" }} color="primary">
+                      View All
+                    </Button>
+                  </Link>
                 </div>
+                {/* <Router> */}
                 <Row>
                   {product?.data?.map((item) => (
                     <Col xs="auto" sm="6" lg="4" style={{ margin: "5px 0px" }}>
-                      <Product
-                        title={item.title}
-                        description={item.description}
-                        src={item.image}
-                      />
+                      <Link to={"/products/" + item.id}>
+                        <Product
+                          // style={{}}
+                          title={item.title}
+                          description={item.description}
+                          src={item.image}
+                          price={item.price * 100}
+                          id={item.id}
+                        />
+                      </Link>
                     </Col>
                   ))}
                 </Row>
+                {/* </Router> */}
               </>
             );
           })}

@@ -3,6 +3,7 @@ import ProductCard from "./ProductCard";
 import { Col, Row, Container, Badge } from "reactstrap";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { BASE_URL } from "../config";
 function Category({}) {
   const { cat } = useParams();
   console.log("🚀 ~ file: Category.js ~ line 6 ~ Category ~ cat", cat);
@@ -11,7 +12,7 @@ function Category({}) {
   useEffect(async () => {
     console.log("Category Mounting");
     const axiosResult = await axios.get(
-      "http://localhost:3000/products/categoryWiseData",
+      BASE_URL + "/products/categoryWiseData",
       { params: { cat } }
     );
     console.log(
@@ -47,6 +48,7 @@ function Category({}) {
                 description={item.description}
                 src={item.image}
                 price={item.price * 1000}
+                id={item._id}
               />
             </Col>
           ))}

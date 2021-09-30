@@ -13,7 +13,7 @@ import {
 import { UserContext } from "../context/UserContext";
 import LoginModal from "./LoginModal";
 
-const Example = (props) => {
+const NavbarWrapper = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, setUser } = useContext(UserContext);
 
@@ -22,9 +22,9 @@ const Example = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   const [modal, setModal] = useState(false);
-
   function handleLogout() {
     localStorage.clear();
+    setUser({});
   }
   return (
     <div
@@ -40,13 +40,13 @@ const Example = (props) => {
     >
       <Navbar color="dark" dark expand="md">
         <NavbarBrand style={{ paddingLeft: "5px" }} href="/">
-          ShopWiz {String(user?.email)}
+          ShopWiz
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar style={{ flex: 1 }}>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink href="/orders/">Orders</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="https://github.com/reactstrap/reactstrap">
@@ -78,4 +78,4 @@ const Example = (props) => {
   );
 };
 
-export default Example;
+export default NavbarWrapper;

@@ -1,13 +1,23 @@
 import React, { useState, useContext } from "react";
+import { useHistory } from "react-router";
 import { Form, FormGroup, Label, Input, FormText, Button } from "reactstrap";
 import axios from "axios";
+import { BASE_URL } from "../config";
 import { UserContext } from "../context/UserContext";
-function Login({ setOldUser = () => ({}), setModal = () => ({}) }) {
+function Login({
+  isModal = false,
+  setOldUser = () => ({}),
+  setModal = () => ({}),
+}) {
   const [authDetails, setAuthDetails] = useState({
     email: "",
     password: "",
   });
-
+  const history = useHistory();
+  const routeChange = () => {
+    let path = `/`;
+    history.push(path);
+  };
   const { user, setUser } = useContext(UserContext);
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -24,7 +34,7 @@ function Login({ setOldUser = () => ({}), setModal = () => ({}) }) {
     const { email, password } = authDetails || {};
 
     try {
-      const result = await axios.post("http://localhost:3000/auth/login", {
+      const result = await axios.post(BASE_URL + "/auth/login", {
         headers: {
           "Access-Control-Allow-Origin": "*",
         },
@@ -53,6 +63,7 @@ function Login({ setOldUser = () => ({}), setModal = () => ({}) }) {
       }
 
       setModal((prev) => !prev);
+      if (!isModal) routeChange();
     } catch (error) {
       console.error(error);
     }
@@ -79,7 +90,9 @@ function Login({ setOldUser = () => ({}), setModal = () => ({}) }) {
           placeholder="password placeholder"
         />
       </FormGroup>
-      <Button onClick={handleLogin}>Login</Button>
+      <Button onClick={handleLogin} style={{ margin: "5px 0px" }}>
+        Login
+      </Button>
       <div>{errorMessage}</div>
     </Form>
   );

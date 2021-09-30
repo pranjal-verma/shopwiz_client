@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Container,
   Form,
   FormGroup,
   Label,
@@ -28,14 +29,17 @@ function AuthModal({ show = false, modal, setModal }) {
         // style={{ padding: "40px", width: "100%" }}
       >
         <ModalHeader toggle={toggle}>Welcome!</ModalHeader>
-
-        {oldUser ? (
-          <Login setOldUser={setOldUser} setModal={setModal} />
-        ) : (
-          <Signup setOldUser={setOldUser} />
-        )}
-
-        <Button onClick={() => setOldUser((prev) => !prev)}>
+        <Container>
+          {oldUser ? (
+            <Login setOldUser={setOldUser} setModal={setModal} isModal={true} />
+          ) : (
+            <Signup setOldUser={setOldUser} isModal={true} />
+          )}
+        </Container>
+        <Button
+          style={{ margin: "10px" }}
+          onClick={() => setOldUser((prev) => !prev)}
+        >
           New to Shopwiz? Signup Instead
         </Button>
         {/* <ModalFooter>
