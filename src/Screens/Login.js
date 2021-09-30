@@ -77,7 +77,7 @@ function Login({
           type="email"
           name="email"
           id="email"
-          placeholder="with a placeholder"
+          placeholder="Enter Email"
         />
       </FormGroup>
       <FormGroup>
@@ -87,7 +87,7 @@ function Login({
           type="password"
           name="password"
           id="password"
-          placeholder="password placeholder"
+          placeholder="Enter password"
         />
       </FormGroup>
       <Button onClick={handleLogin} style={{ margin: "5px 0px" }}>

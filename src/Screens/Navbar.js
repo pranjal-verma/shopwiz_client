@@ -22,6 +22,7 @@ const NavbarWrapper = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   const [modal, setModal] = useState(false);
+
   function handleLogout() {
     localStorage.clear();
     setUser({});
@@ -49,7 +50,7 @@ const NavbarWrapper = (props) => {
               <NavLink href="/orders/">Orders</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
+              <NavLink href="https://github.com/pranjal-verma/shopwiz_client">
                 GitHub
               </NavLink>
             </NavItem>

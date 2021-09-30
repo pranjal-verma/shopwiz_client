@@ -34,55 +34,19 @@ function Homepage() {
         BASE_URL + "/products/categoryProducts"
       );
       let { data } = axiosResponse || {};
-      console.log(
-        "🚀 ~ file: Homepage.js ~ line 30 ~ useEffect ~ products",
-        data
-      );
-
-      const {
-        electronics = [],
-        // "women's clothing" = [],
-        // "men's clothing"= [],
-        jewelery = [],
-      } = data || {};
-
       setProducts(data);
     } catch (error) {
       console.error(error);
     }
   }, []);
   let temp = [];
-  for (let i = 0; i < 10; i++) {
-    temp.push("   ");
-  }
   return (
     <>
       {/*  Carousel for popular items */}
-      {/* <Row style={{ maxHeight: "500px" }}> */}
       {/* Shop By Category  */}
       {/* Deal of the day */}
-      {/* </Row> */}
       <div style={{ margin: "10px" }}>
-        {/* <Row style={{ maxHeight: "100px" }}></Row> */}
         <Container>
-          {/* <Row>
-            {temp.map(() => {
-              return (
-                <Col
-                  md="3"
-                  lg="4"
-                  style={{
-                    marginTop: "10px",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <Product></Product>
-                </Col>
-              );
-            })}
-          </Row> */}
-
           {products.map((product) => {
             console.log(
               "🚀 ~ file: Homepage.js ~ line 93 ~ {products.map ~ product",
@@ -112,7 +76,6 @@ function Homepage() {
                     </Button>
                   </Link>
                 </div>
-                {/* <Router> */}
                 <Row>
                   {product?.data?.map((item) => (
                     <Col xs="auto" sm="6" lg="4" style={{ margin: "5px 0px" }}>
@@ -129,7 +92,6 @@ function Homepage() {
                     </Col>
                   ))}
                 </Row>
-                {/* </Router> */}
               </>
             );
           })}

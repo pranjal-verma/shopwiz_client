@@ -79,7 +79,7 @@ function Orders() {
         <Row>
           <h3>Recent Orders</h3>
           {products.map(({ _id, orderId, productId: product, status }) => (
-            <Col>
+            <Col xs="auto" md="auto" lg="5">
               <PCard
                 key={_id}
                 id={orderId}

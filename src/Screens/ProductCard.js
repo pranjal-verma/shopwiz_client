@@ -56,7 +56,7 @@ function ProductCard({ title = "", description, price, src, id }) {
           }
         );
         console.log(
-          "🚀 ~ file: ProductCard.js ~ line 43 ~ handlePayNow ~ response",
+          "pranjal 🚀 ~ file: ProductCard.js ~ line 43 ~ handlePayNow ~ response",
           response
         );
         setPurchased(false);
@@ -85,7 +85,7 @@ function ProductCard({ title = "", description, price, src, id }) {
 
   return (
     <div
-      style={{ cursor: "pointer", ...stateStyle }}
+      style={{ cursor: "pointer", ...stateStyle, textDecoration: "none" }}
       onMouseEnter={() =>
         setStateStyle({
           boxShadow:

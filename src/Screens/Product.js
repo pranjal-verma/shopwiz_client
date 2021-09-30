@@ -34,7 +34,7 @@ function Product() {
           description={product?.description}
           src={product?.image}
           price={product?.price}
-          id={product.id}
+          id={product._id}
         />
       </Container>
     </>
