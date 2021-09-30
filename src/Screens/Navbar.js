@@ -62,18 +62,20 @@ const NavbarWrapper = (props) => {
         </Collapse>
       </Navbar>
       <div className="greetings" style={{ color: "white" }}></div>
-      {!(token && email && userId) ? (
-        <Button
-          style={{ justifyContent: "flex-end" }}
-          onClick={() => setModal((prev) => !prev)}
-          primary
-        >
-          Login
-        </Button>
-      ) : (
-        <Button onClick={handleLogout}>Logout</Button>
-      )}
-
+      <div>
+        {" "}
+        {!(token && email && userId) ? (
+          <Button
+            style={{ justifyContent: "flex-end" }}
+            onClick={() => setModal((prev) => !prev)}
+            primary
+          >
+            Login
+          </Button>
+        ) : (
+          <Button onClick={handleLogout}>Logout</Button>
+        )}
+      </div>
       <LoginModal modal={modal} setModal={setModal}></LoginModal>
     </div>
   );

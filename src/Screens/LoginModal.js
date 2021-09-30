@@ -16,9 +16,10 @@ import {
 import Login from "./Login";
 import Signup from "./Signup";
 
+const SIGN_UP = " New to Shopwiz? Signup Instead";
+const LOGIN = "Already a user? Login Instead";
 function AuthModal({ show = false, modal, setModal }) {
   // const [modal, setModal] = useState(show);
-
   const toggle = () => setModal(!modal);
   const [oldUser, setOldUser] = useState(false);
   return (
@@ -40,7 +41,7 @@ function AuthModal({ show = false, modal, setModal }) {
           style={{ margin: "10px" }}
           onClick={() => setOldUser((prev) => !prev)}
         >
-          New to Shopwiz? Signup Instead
+          {oldUser ? SIGN_UP : LOGIN}
         </Button>
         {/* <ModalFooter>
           <Button color="primary" onClick={toggle}>
