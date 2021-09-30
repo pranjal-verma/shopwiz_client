@@ -27,8 +27,8 @@ function Signup({ isModal = false, setOldUser = () => ({}) }) {
     e.preventDefault();
     setErrorMessage("");
     const { email, password, confirmPassword } = authDetails || {};
-    // if (!validateEmail(email))
-    //   return setErrorMessage("Please provid a valid email");
+    if (!validateEmail(email))
+      return setErrorMessage("Please provid a valid email");
     // if (!validatePassword(password))
     //   return setErrorMessage(`
     //   Password must contain \n
